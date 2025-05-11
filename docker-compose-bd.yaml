@@ -45,11 +45,20 @@ services:
       - mongodbdata:/data/db
     networks:
       - fitec_network
+  adminer:
+    image: adminer
+    container_name: my_adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    networks:
+      - fitec_network
 
 # Definición de la red
 networks:
   fitec_network:
     driver: bridge
+    external: true
 
 # Definición de volúmenes nombrados para persistencia
 volumes:
